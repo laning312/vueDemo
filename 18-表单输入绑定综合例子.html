@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h2>用户注册</h2>
+    <form action="#">
+        用户名： <input type="text" v-model="username"> <br>
+        密码： <input type="password" v-model="password"> <br>
+        性别： <input type="radio" v-model="sex" value="1"> 男
+        <input type="radio" v-model="sex" value="0"> 女 <br>
+        爱好：
+        <input type="checkbox" v-model="like" value="音乐"> 音乐
+        <input type="checkbox" v-model="like" value="运动"> 运动
+        <input type="checkbox" v-model="like" value="绘画"> 绘画
+        <br>
+        个人简介：
+        <textarea cols="30" rows="10" v-model="myInfo"></textarea> <br>
+        来自：
+        <select v-model="myFrom">
+            <option value="">
+                请选择
+            </option>
+            <option :value="o" v-for="o in options">{{o}}</option>
+        </select>
+        <br>
+        <input type="button" value="注册" @click="reg">
+    </form>
+</div>
+
+<script src="lib/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            username: '',
+            password: '',
+            sex: '',
+            like: [],
+            myInfo: '',
+            myFrom: '',
+            options: ["河南","湖北","新疆"]
+        },
+        methods: {
+            reg: function () {
+                console.log("注册成功");
+                console.log(this.username, this.password, this.sex, this.like, this.myInfo, this.myFrom);
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+        .box1{
+            width: 100px;
+            height: 100px;
+            background: green;
+        }
+
+        .yellowColor{
+            color: yellow;
+        }
+
+        .green-color{
+            color: green;
+        }
+
+        .red{
+            color: red;
+        }
+        .white{
+            background: #fff;
+        }
+        
+        body{
+            background: #ddd;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="user">
+    <div :class="[user!='admin'?errorStyle:'', bgStyle]">
+        hello
+    </div>
+
+</div>
+
+<script src="lib/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            user: '',
+            errorStyle: 'red',
+            bgStyle: "white"
+        }
+    });
+</script>
+</body>
+</html>

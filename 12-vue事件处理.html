@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" @keyup.enter="submit">
+    <button @click="submit">提交</button>
+</div>
+
+<script src="lib/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            num: 1,
+            totalNum: 10
+        },
+        methods: {
+            submit: function () {
+                alert("提交成功！");
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+
+    <!--
+        计算属性基于它们的依赖进行缓存，只有它的相关依赖发生改变时才会重新计算。
+        但方法只要调用就会重新执行（计算）。
+    -->
+    <input type="text" v-model="msg">
+    <h4>{{msg}}</h4>
+
+    <h4>{{getInfo()}}</h4>
+    <h4>{{getInfo()}}</h4>
+    <h4>{{getInfo()}}</h4>
+    <h4>{{getInfo()}}</h4>
+    <h4>{{getInfo()}}</h4>
+
+
+    <h3>{{getValue}}</h3>
+    <h3>{{getValue}}</h3>
+    <h3>{{getValue}}</h3>
+    <h3>{{getValue}}</h3>
+    <h3>{{getValue}}</h3>
+</div>
+
+<script src="lib/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            msg: "hello world"
+        },
+        methods: {
+           getInfo: function () {
+               return this.msg + ", " + Math.random();
+           }
+        },
+        computed: {
+            getValue: function () {
+                return this.msg + "," + Math.random();
+            }
+        }
+    });
+</script>
+</body>
+</html>

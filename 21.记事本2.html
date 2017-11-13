@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #f5f5f5;
+            color: #4d4d4d;
+        }
+        h2{
+            font-size: 50px;
+            font-style: italic;
+            text-align: center;
+            color: rgba(175, 47, 47, 0.2);
+            margin: 40px auto;
+        }
+        .infos{
+            width: 80%;
+            list-style: none;
+            padding: 0 20px;
+            position: relative;
+            box-shadow:  0px 10px 30px #ccc;
+            margin: 0 auto;
+            background: #fff;
+        }
+        .infos input[type=text]{
+            width: 100%;
+            height: 36px;
+            line-height: 36px;
+            font-size: 20px;
+            padding-left: 10px;
+        }
+        .infos input::-webkit-input-placeholder{
+            font-style: italic;
+            font-weight: 100;
+            color: #999;
+        }
+
+        .infos li{
+            cursor: pointer;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+
+        .infos li:first-child{
+            border-bottom: transparent;
+        }
+        .infos .time{
+            position: absolute;
+            right: 60px;
+            top: 12px;
+            font-size:  12px;
+        }
+
+        .infos .close{
+            position: absolute;
+            top: 8px;
+            right: 20px;
+            font-size: 22px;
+            border: none;
+            background: transparent;
+            color: #999;
+            opacity: 0;
+            transition: all 0.5s;
+        }
+        .infos li:hover .close{
+            opacity: 1;
+        }
+
+        li input[type=checkbox]{
+            border: none;
+            width: 32px;
+            height: 32px;
+            -webkit-appearance: none;
+            background: url(images/check_normal.png);
+            position: absolute;
+            top: 6px;
+            outline: none;
+        }
+
+        .infos li .value{
+            padding-left: 50px;
+        }
+
+        /*被选中后li内部子元素的样式*/
+        li.checked input[type=checkbox]{
+            background: url(images/checked-hollow.png);
+        }
+
+        li.checked span.value{
+            color: #ddd;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <h2>{{title}}</h2>
+    <ul class="infos">
+        <li>
+            <input type="text" placeholder="在此输入" v-model="newInfo" @keyup.enter="addItem">
+        </li>
+        <li v-for="(info, index) in infos" :class="{checked: info.done}">
+            <input type="checkbox" v-model="info.done" @change="saveChange">
+            <span class="value">{{index + 1}}. {{info.value}}</span>
+            <span class="time">{{info.created | myDate}}</span>
+            <button class="close" @click="delItem(index)">&times;</button>
+        </li>
+    </ul>
+</div>
+
+<script src="lib/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            title: "我的记事本",
+            newInfo: '',
+            infos: []
+        },
+        methods: {
+            addItem: function () {
+                this.infos.push({
+                    value: this.newInfo,
+                    created: new Date().getTime(),
+                    done: false
+                });
+                this.newInfo = '';
+
+                this.saveInfo();
+
+            },
+            getItem: function () {
+                if(localStorage.getItem("myinfos") != null) {
+                    this.infos = JSON.parse(localStorage.getItem("myinfos"));
+                }
+            },
+            saveChange: function () {
+//                localStorage.setItem("myinfos", JSON.stringify(this.infos));
+                this.saveInfo();
+            },
+            saveInfo: function () {
+                localStorage.setItem("myinfos", JSON.stringify(this.infos.sort(function (x, y) {
+                    if(x.created < y.created){
+                        return 1;
+                    }else{
+                        return -1;
+                    }
+                })));
+            },
+
+        },
+        filters: {
+            myDate: function (time) {
+                return new Date(time).toLocaleString();
+            }
+        }
+    });
+
+    app.getItem();
+
+</script>
+</body>
+</html>

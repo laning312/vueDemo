@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="box">
+    <p title="这是一个提示">kldfjsdfdslf</p>
+
+    <p v-bind:title="info">kdfsldfdfs</p>
+
+    <img v-bind:src="mySrc" alt="">
+
+    <a v-bind:href="myLink">baidu</a>
+    <a :href="myLink">baidu</a>
+
+    
+</div>
+
+<script src="lib/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: "#box",
+        data: {
+            info: "hello",
+            msg: "world",
+            mySrc: "images/01.jpg",
+            myLink: "http://www.baidu.com"
+        }
+    });
+
+
+    /*
+   从数据到视图
+      Model   ->    View
+     */
+</script>
+</body>
+</html>

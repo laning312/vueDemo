@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <form action="#">
+        username: <input type="text" v-model="username"> <br>
+        address: <input type="text" v-model="address" @keyup.enter="addUser"> <br>
+        <input type="button" @click="addUser" value="add">
+    </form>
+
+    <table border="1">
+        <tr>
+            <th>USERNAME</th>
+            <th>ADDRESS</th>
+        </tr>
+        <tr v-for="user in users">
+            <td>{{user.username}}</td>
+            <td>{{user.address}}</td>
+        </tr>
+    </table>
+</div>
+
+<script src="lib/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            username: "",
+            address: "",
+            users: [
+            ]
+        },
+        methods: {
+            addUser: function () {
+                this.users.push({
+                    username: this.username,
+                    address: this.address
+                });
+            }
+        }
+    });
+</script>
+</body>
+</html>

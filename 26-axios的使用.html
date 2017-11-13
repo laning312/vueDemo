@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul v-if="books!=null">
+        <li v-for="book in books">
+            {{book.title}}
+        </li>
+    </ul>
+</div>
+
+<script src="lib/vue.js"></script>
+<script src="lib/axios.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            books: []
+        },
+        methods: {
+            getData: function () {
+                var that = this;
+                console.log(this);
+                axios.get("http://localhost:8081?myUrl=https://api.douban.com/v2/book/search?q=javascript")
+                    .then(function (res) {
+                        console.log(this);
+                    console.log(res);
+                    that.books = res.data.books;
+                    console.log(that.books);
+                }, function(err){
+                    console.log(err);
+                });
+            }
+        }
+    });
+
+    app.getData();
+</script>
+</body>
+</html>

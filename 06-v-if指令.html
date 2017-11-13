@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+<body>
+
+<div id="box">
+   <div v-if="userPro===1000">超级管理员权限列表</div>
+   <div v-else-if="userPro===1001">管理员权限列表</div>
+   <div v-else>普通用户权限列表</div>
+</div>
+
+<script src="lib/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: "#box",
+        data: {
+            userPro: 1000
+        }
+    });
+</script>
+</body>
+</html>

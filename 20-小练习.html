@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <select v-model="pro" @change="setCity">
+        <option value="">请选择</option>
+        <option :value="index" v-for="(pro,index) in pros">
+            {{pro}}
+        </option>
+    </select> 省
+    <select v-model="city">
+        <option value="">请选择</option>
+        <option :value="city" v-for="city in myCitys">{{city}}</option>
+    </select> 市
+</div>
+
+<script src="lib/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            pro: '',
+            city: '',
+            pros: ["河北","河南","湖北"],
+            myCitys: [],
+            citys: [["石家庄"], ["郑州", "洛阳", "南阳"], ["武汉","宜昌"]]
+        },
+        methods: {
+            setCity: function () {
+                this.myCitys = this.citys[this.pro];
+            }
+        }
+    });
+</script>
+</body>
+</html>

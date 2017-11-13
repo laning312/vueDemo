@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <button v-on:click="test">CLICK</button>
+    <button v-on:click="test2">CLICK2</button>
+</div>
+
+<script src="lib/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {},
+        methods: {
+            test: function () {
+                alert("hello");
+            },
+            test2: function () {
+                console.log("test2");
+            }
+        }
+    });
+</script>
+</body>
+</html>

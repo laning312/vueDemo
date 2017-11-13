@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div style="height: 1000px;"></div>
+    <div class="box" @click="divClick">
+        <button @click.stop="btnClick">TEST</button>
+        <a href="#" @click.stop.prevent="linkClick">myLink</a>
+    </div>
+</div>
+
+<script src="lib/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            num: 1,
+            totalNum: 10
+        },
+        methods: {
+            btnClick: function () {
+                console.log("btnClick....");
+            },
+            divClick: function () {
+                console.log("divClick....");
+            },
+            linkClick: function () {
+                console.log("linkClick....");
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+        .box1{
+            width: 100px;
+            height: 100px;
+            background: green;
+        }
+
+        .yellowColor{
+            color: yellow;
+        }
+
+        .green-color{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <input type="checkbox" v-model="flag"> 有背景
+    <input type="checkbox" v-model="flag1"> 有文字颜色
+    <div :class="{'box': flag, 'green-color': flag1}">hello</div>
+</div>
+
+<script src="lib/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            flag: true,
+            flag1: false
+        }
+    });
+</script>
+</body>
+</html>

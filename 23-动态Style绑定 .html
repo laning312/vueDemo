@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p style="color: red; background: yellow">hello</p>
+
+    <input type="text" placeholder="请输入颜色值或名" v-model="myColor">
+    <input type="text" placeholder="请输入字体大小" v-model="myFont">
+    <p :style="{color: myColor, 'font-size': myFont}">world</p>
+</div>
+
+<script src="lib/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            myColor: 'green',
+            myFont: '20px'
+        }
+    });
+</script>
+</body>
+</html>

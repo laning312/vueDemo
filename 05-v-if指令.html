@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box1{
+            width: 100px;
+            height: 100px;
+            background: green;
+        }
+
+        .box2{
+            width: 120px;
+            height: 120px;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box">
+    <div class="box1" v-if="num === 10"></div>
+    <div class="box2" v-else></div>
+</div>
+
+<script src="lib/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: "#box",
+        data: {
+            flag: false,
+            num: 10
+        }
+    });
+</script>
+</body>
+</html>

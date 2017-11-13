@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+{{msg}}, {{flag}},
+    {{8+5}}, {{price * n}},
+    {{flag ? success : error}}
+    <div>
+        <span>{{user.name}}</span>
+        <span>{{user.age}}</span>
+        <span>{{user.address}}</span>
+    </div>
+
+    <table border="1">
+        <tr>
+            <th>NAME</th>
+            <th>AGE</th>
+            <th>ADDRESS</th>
+        </tr>
+        <tr>
+            <td>{{user.name}}</td>
+            <td>{{user.age}}</td>
+            <td>{{user.address}}</td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    {{msg}}
+</div>
+
+
+<script src="lib/vue.js"></script>
+<script>
+    new Vue({
+        el: "#box",
+        data: {
+            msg: "hello",
+            flag: false,
+            price: 30,
+            n: 10,
+            user: {
+                name: "john",
+                age: 20,
+                address: "河南"
+            },
+            success: "成功！",
+            error: "失败！！！"
+        }
+    });
+</script>
+</body>
+</html>

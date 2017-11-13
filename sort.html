@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var arr = ["aaa", "ddd", "ccc", "bbbb"];
+    console.log(arr);
+    /*arr.sort();
+    console.log(arr);*/
+
+    var objs = [{user: "Bbbb", age: 20}, {user: "aaaa",age: 21}, {user: "cccc", age: 10}];
+    console.log(objs);
+    objs.sort(function(a, b){
+        if(a.user < b.user){
+            return -1;
+        }else{
+            return 1;
+        }
+    });
+    console.log(objs);
+</script>
+</body>
+</html>
